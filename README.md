@@ -11,7 +11,7 @@
 | firstname      | string   | null: false |
 | lastname_kana  | string   | null: false |
 | firstname_kana | string   | null: false |
-| birthday       | datetime | null: false |
+| birthday       | date     | null: false |
 
 ### Association
 
@@ -42,7 +42,7 @@
 - belongs_to_active_hash:delivery_day
 
 - belongs_to:user
-- belongs_to:profile
+- has_one:profile
 
 ## profiles テーブル
 
@@ -54,7 +54,7 @@
 ### Association
 
 - has_one:profile
-- has_many:items
+- belongs_to:item
 - belongs_to:user
 
 ## sends テーブル
