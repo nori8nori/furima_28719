@@ -1,24 +1,75 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column         | Type     | Options     |
+| -------------- | -------- | ----------- |
+| nickname       | string   | null: false |
+| email          | string   | null: false |
+| password       | string   | null: false |
+| lastname       | string   | null: false |
+| firstname      | string   | null: false |
+| lastname_kana  | string   | null: false |
+| firstname_kana | string   | null: false |
+| birthday       | date     | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many:items
+- has_many:profiles
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| explanation        | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| delivery_area_id   | integer    | null: false                    |
+| delivery_day_id    | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
+- has_one_attached:image
 
-* How to run the test suite
+- belongs_to_active_hash:xategory
+- belongs_to_active_hash:status
+- belongs_to_active_hash:delivery_charge
+- belongs_to_active_hash:deelivery_area
+- belongs_to_active_hash:delivery_day
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to:user
+- has_one:profile
 
-* Deployment instructions
+## profiles テーブル
 
-* ...
+| Column   | Type       | Options                    |
+| ---- | ---------- | ------------------------------ |
+| user | references | null: false, foreign_key: true |
+| item | references | null: false, foreign_key: true |
+
+### Association
+
+- has_one:send
+- belongs_to:item
+- belongs_to:user
+
+## sends テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| postalcode       | string     | null: false                    |
+| delivery_area_id | integer    | null: false                    |
+| municipalties    | string     | null: false                    |
+| address          | string     | null: false                    |
+| building         | string     |                                |
+| phone            | string     | null: false                    |
+| profile          | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to:profile
+- belongs_to_active_hash:delivery_area
