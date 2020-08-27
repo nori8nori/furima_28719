@@ -53,7 +53,7 @@
 
 ### Association
 
-- has_one:profile
+- has_one:send
 - belongs_to:item
 - belongs_to:user
 
@@ -71,5 +71,5 @@
 
 ### Association
 
-- belongs_to:send
+- belongs_to:profile
 - belongs_to_active_hash:delivery_area
