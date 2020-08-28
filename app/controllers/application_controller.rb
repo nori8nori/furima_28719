@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
 
   #ユーザーの名前/誕生日をDBに保存出来る様に設定
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up,keys: [:nickname, :lastname, :firstname, :lastname_kana, :firstname_kana, :birsday ])
+    devise_parameter_sanitizer.permit(:sign_up,keys: [:nickname, :lastname, :firstname, :lastname_kana, :firstname_kana, :birthday ])
+  binding.pry
   end
 
   def basic_auth
