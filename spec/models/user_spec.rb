@@ -2,13 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User , type: :model do
   before do
-    # binding.pry
     @user = FactoryBot.build(:user)
   end
 
   describe 'ユーザー新規登録' do
-    it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できること" do
-    end
 
     it "nicknameが空では登録できないこと" do
       @user.nickname = ''
@@ -30,6 +27,12 @@ RSpec.describe User , type: :model do
       expect(another_user.errors.full_messages).to include("Email has already been taken")
     end
 
+    it" メールアドレスは@を含んでいないと保存できない" do
+      @user.email = "0"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Email is invalid")
+    end
+
     it "passwordが空では登録できないこと" do
       @user.password = ""
       @user.valid?
@@ -48,6 +51,48 @@ RSpec.describe User , type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
-  end
 
+    it"ユーザー本名が必須であること" do
+      @user.firstname = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Firstname can't be blank")
+    end
+
+    it"ユーザー名字が必須であること" do
+      @user.lastname = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Lastname can't be blank")
+    end
+
+    it"ユーザー本名（名前）のフリガナが必須であること" do
+      @user.firstname_kana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Firstname kana can't be blank")
+    end
+
+    it"ユーザー本名（苗字）のフリガナが必須であるこ" do
+      @user.lastname_kana = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Lastname kana can't be blank")
+    end
+
+    it"ユーザー本名（名前）のフリガナは全角（カタカナ）で入力させること" do
+      @user.firstname_kana = "0aAあ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Firstname kana Full-width katakana characters")
+    end
+
+    it"ユーザー本名（苗字）のフリガナは全角（カタカナ）で入力させること" do
+      @user.lastname_kana = "0aAあ"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Lastname kana Full-width katakana characters")
+    end
+
+    it"生年月日が必須であること" do
+      @user.birthday = ""
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birthday can't be blank")
+    end
+
+  end
 end
