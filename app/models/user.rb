@@ -7,12 +7,12 @@ class User < ApplicationRecord
 
   # 空の場合はDBに保存しないというバリデーション＋αの制約
   with_options presence: true do
-     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[\w-]{6,128}+\z/i, message: "６文字以上の半角英数字"} 
-     validates :nickname, format:
-     validates :lastname, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "例）山田"}
-     validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "例）隆太郎"}
-     validates :lastname_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "例）ヤマダ"}
-     validates :firstname_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "例）リクタロウ"}
+     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[\w-]{6,128}+\z/i, message: "Password Include both letters and numbers"} 
+     validates :nickname 
+     validates :lastname, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "Last name Full-width characters"}
+     validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "First name Full-width characters"}
+     validates :lastname_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "Last name kana Full-width katakana characters"}
+     validates :firstname_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "First name kana Full-width katakana characters"}
      validates :birthday
   end
 
