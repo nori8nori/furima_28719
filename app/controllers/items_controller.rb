@@ -4,4 +4,7 @@ class ItemsController < ApplicationController
     # @items = items.all
   end
 
+  def new
+  end
+
 end
