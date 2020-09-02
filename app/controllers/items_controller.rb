@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    
     @item = Item.new(item_params)
 
     if @item.save
@@ -19,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def checked
-    
+
   end
 
   #プライベートメソッド

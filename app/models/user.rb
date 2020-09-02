@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   # #アソシエーション
-  has_many:items
-  # has_many:profiles
+  has_many :items
+  # has_many :profiles
   
 end
