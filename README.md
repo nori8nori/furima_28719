@@ -35,7 +35,7 @@
 ### Association
 - has_one_attached:image
 
-- belongs_to_active_hash:xategory
+- belongs_to_active_hash:category
 - belongs_to_active_hash:status
 - belongs_to_active_hash:delivery_charge
 - belongs_to_active_hash:deelivery_area

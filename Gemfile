@@ -32,7 +32,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.0'
+  #テストコード
   gem'factory_bot_rails'
+  #ランダムで生成してくれる
   gem 'faker'
 end
 
@@ -61,5 +63,13 @@ group :production do
 gem 'rails_12factor'
 end
 
+#ユーザー登録機能
 gem'devise'
+#「bunding.pry」を使用するため
 gem'pry-rails'
+#データベースへ保存せずにデータを取り扱うことができる
+gem'active_hash'
+#コマンドラインから簡単に画像の保存形式の変更
+gem 'mini_magick'
+#画像のサイズを調整
+gem 'image_processing', '~> 1.2'
