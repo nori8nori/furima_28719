@@ -2,14 +2,14 @@
 const math = () => {
 
   const input = document.getElementById('item-price')
-  const X = document.getElementById('add-tax-price')
-  const Y = document.getElementById('profit')
+  const tax = document.getElementById('add-tax-price')
+  const profit = document.getElementById('profit')
 
   input.addEventListener('input',kakaku)
 
   function kakaku(e){
-      X.textContent = e.target.value / 10;
-      Y.textContent = e.target.value - ( e.target.value /10 );
+      tax.textContent = e.target.value / 10;
+      profit.textContent = e.target.value - ( e.target.value /10 );
   }
 }
 
