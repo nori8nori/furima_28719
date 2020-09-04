@@ -42,9 +42,9 @@
 - belongs_to_active_hash:delivery_day
 
 - belongs_to:user
-- has_one:profile
+- has_one:buy
 
-## profiles テーブル
+## buy テーブル
 
 | Column   | Type       | Options                    |
 | ---- | ---------- | ------------------------------ |
@@ -71,5 +71,5 @@
 
 ### Association
 
-- belongs_to:profile
+- belongs_to:buy
 - belongs_to_active_hash:delivery_area
