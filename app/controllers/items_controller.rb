@@ -13,16 +13,18 @@ class ItemsController < ApplicationController
   def create
     #item(初商品情報)を入れる箱の中に情報を入れてその情報を保存している
     @item = Item.new(item_params)
-
     #もし保存できたらトップ画面に遷移
     if @item.save
       redirect_to root_path
-
       #もし保存できなかったら商品登録画面（今のページに）遷移。しかし、入力している情報は入っているのでエラー設定も反映される。
     else
       render :new
     end
 
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   #プライベートメソッド
