@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  
+  before_action :set_item, only: [:show, :edit,:update]
+
   def index
     # item（商品情報）の箱に入っているもの全てを表示させる
     @item = Item.all
@@ -22,15 +25,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     
     if @item.update(item_params)
       redirect_to item_path
@@ -47,4 +47,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :explanation, :category_id, :status_id, :delivery_charge_id, :delivery_area_id,
                                  :delivery_day_id, :price, :image).merge(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
