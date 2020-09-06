@@ -40,6 +40,9 @@ class ItemsController < ApplicationController
 
   end
 
+  def destroy
+  end
+
   # プライベートメソッド
   private
 
