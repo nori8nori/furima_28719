@@ -73,3 +73,5 @@ gem'active_hash'
 gem 'mini_magick'
 #画像のサイズを調整
 gem 'image_processing', '~> 1.2'
+#クレカ決済機能
+gem 'payjp'
