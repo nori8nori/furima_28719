@@ -1,5 +1,5 @@
 const pay = () => {
-  Payjp.setPublicKey("p");// PAY.JPテスト公開鍵。注意）公開鍵を残したままGitHubにプッシュしてはいけない
+  Payjp.setPublicKey("pk_test_2cc5336c63785063eb7f34b4");// PAY.JPテスト公開鍵。注意）公開鍵を残したままGitHubにプッシュしてはいけない
   const form = document.getElementById("charge-form");//charge-form内のsubmitが実行されるとイベントが発火
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const pay = () => {
       exp_year: `20${formData.get("ex_year")}`//クレカの期限「年」
     };
 
-    console.log(card)
+    // console.log(card)
 
     // alert(formData.get("number"))//ジャバスクが起動した瞬間に実行される。つまり、HPを開いた瞬間に「OK」が表示されなかったらジャバスク自体が起動していないということ
     // alert(formData.get("cvc"))//クレカのCVC
@@ -27,7 +27,7 @@ const pay = () => {
     
     Payjp.createToken(card, (status, response) => {
 
-      alert(status)
+      // alert(status)
       // console.table(response)
 
       if (status == 200) { //PAY.JP側の処理でトークンの生成に成功した場合に、if文の中のコードが実行
