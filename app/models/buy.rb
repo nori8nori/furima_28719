@@ -5,11 +5,11 @@ class Buy < ApplicationRecord
   belongs_to :user
 
   #バリデーション設定
-  with_options presence: true do
+  # with_options presence: true do
 
-    validates :user_id
-    validates :item_id
+  #   validates :user_id
+  #   validates :item_id
   
-  end
+  # end
 
 end
