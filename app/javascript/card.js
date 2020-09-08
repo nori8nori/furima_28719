@@ -1,5 +1,5 @@
 const pay = () => {
-  Payjp.setPublicKey("pk_test_2cc5336c63785063eb7f34b4");// PAY.JPテスト公開鍵。注意）公開鍵を残したままGitHubにプッシュしてはいけない
+  Payjp.setPublicKey("pb7f34b4");// PAY.JPテスト公開鍵。注意）公開鍵を残したままGitHubにプッシュしてはいけない
   const form = document.getElementById("charge-form");//charge-form内のsubmitが実行されるとイベントが発火
   form.addEventListener("submit", (e) => {
     e.preventDefault();
