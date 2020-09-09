@@ -1,14 +1,21 @@
 class OdersController < ApplicationController
 
+  before_action :authenticate_user!, only:[:index]#ログインしてないユーザーはindexアクション時にログイン画面に遷移
+
   def index
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])#購入する商品の情報を習得し、oderでも使えるようにしている
   end
 
+  # def new
+  #   @order = OrderBuy.new
+  # end
+
   def create
-    @order = Order.new(price: order_params[:price])
+    @order = OrderBuy.new(order_params)
+    pay_item
+    @order.save
+    binding.pry
     if @order.valid?
-      pay_item
-      @order.save
       return redirect_to root_path
     else
       render 'index'
@@ -18,8 +25,8 @@ class OdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:postalcode, :delivery_area_id, :municipalities, :address,
-                  :building, :phone, :token, :item_id, :buy_id)
+    params.require(:order_buy).permit(:postalcode, :delivery_area_id, :municipalities, :address,
+                                      :building, :phone, :token, :item_id, :buy_id)
   end
 
   def pay_item

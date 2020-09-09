@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:new]#ログインしてないユーザーはnewアクション時にログイン画面に遷移
+
+
 
   def index
     # item（商品情報）の箱に入っているもの全てを表示させる
