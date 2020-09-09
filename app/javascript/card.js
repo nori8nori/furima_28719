@@ -26,6 +26,8 @@ const pay = () => {
 
     
     Payjp.createToken(card, (status, response) => {
+      console.log(card);
+      console.log(response.id);
 
       // alert(status)
       // console.table(response)

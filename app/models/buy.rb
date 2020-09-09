@@ -1,6 +1,6 @@
 class Buy < ApplicationRecord
 
-  has_one :order
+  has_one :oder
   belongs_to :item
   belongs_to :user
 

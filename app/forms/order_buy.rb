@@ -22,8 +22,8 @@ class OrderBuy
 
   def save
     # 配送先情報を保存
-    Order.create(postalcode: postalcode, delivery_area_id: delivery_area_id, municipalities: municipalities, 
-      address: address, phone: phone, building: building, buy_id: buy.id)
+    Oder.create(postalcode: postalcode, delivery_area_id: delivery_area_id, municipalities: municipalities, 
+                address: address, phone: phone, building: building, buy_id: buy.id)
     # 商品＋ユーザーの情報を保存
     Buy.create(user_id: user.id, item_id: item.id)
   end
