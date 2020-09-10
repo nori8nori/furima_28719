@@ -1,4 +1,5 @@
 const pay = () => {
+  console.log("テスト")
   Payjp.setPublicKey("pk_test_2cc5336c63785063eb7f34b4");// PAY.JPテスト公開鍵。注意）公開鍵を残したままGitHubにプッシュしてはいけない
   const form = document.getElementById("charge-form");//charge-form内のsubmitが実行されるとイベントが発火
   form.addEventListener("submit", (e) => {
@@ -11,12 +12,13 @@ const pay = () => {
 
     //クレカ情報を変数に代入している
     const card = {
-      number: formData.get("number"),//クレカのナンバー
-      cvc: formData.get("cvc"),//クレカのCVC
-      exp_month: formData.get("ex_month"),//クレカの期限「月」
-      exp_year: `20${formData.get("ex_year")}`//クレカの期限「年」
+      number: formData.get("oder_buy[number]"),//クレカのナンバー
+      cvc: formData.get("oder_buy[cvc]"),//クレカのCVC
+      exp_month: formData.get("oder_buy[ex_month]"),//クレカの期限「月」
+      exp_year: `20${formData.get("oder_buy[ex_year]")}`//クレカの期限「年」
     };
-
+    
+    
     // console.log(card)
 
     // alert(formData.get("number"))//ジャバスクが起動した瞬間に実行される。つまり、HPを開いた瞬間に「OK」が表示されなかったらジャバスク自体が起動していないということ
@@ -28,7 +30,8 @@ const pay = () => {
     Payjp.createToken(card, (status, response) => {
       console.log(card);
       console.log(response.id);
-
+      // console.log(response.error)
+      debugger
       // alert(status)
       // console.table(response)
 
@@ -52,4 +55,4 @@ const pay = () => {
   });
  };
 
- window.addEventListener("turbolinks:load", pay);//ページがロードされると関数「pay」が実行
+ window.addEventListener("load", pay);//ページがロードされると関数「pay」が実行

@@ -4,21 +4,21 @@ class OdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    # @item = Item.find(params[:item_id])
-  end
-
-  def new
     @oder = OderBuy.new
   end
 
-  def create
-    # binding.pry
-    @oder = OderBuy.new(oder_params)
-    
-    pay_item
-    @oder.save
+  # def new
+  # end
 
+  def create
+    @oder = OderBuy.new(oder_params)
+    # pay_item
+    # @oder.save
+    # binding.pry
     if @oder.valid?
+      pay_item
+      @oder.save
+      # binding.pry
       return redirect_to root_path
     else
       render 'index'
@@ -28,8 +28,7 @@ class OdersController < ApplicationController
   private
 
   def oder_params
-    params.permit(:postalcode, :delivery_area_id, :municipalities, :address, :building, :phone, :token, :item_id)
-          .merge(user_id: current_user.id)
+    params.require(:oder_buy).permit(:postalcode, :delivery_area_id, :municipalities, :address, :building, :phone, :token, :item_id).merge(user_id: current_user.id)
   end
 
   def pay_item
