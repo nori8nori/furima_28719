@@ -2,7 +2,7 @@ class OderBuy
 
   include ActiveModel::Model
 
-  attr_accessor :postalcode, :delivery_area_id, :municipalities, :address, :building, :phone, :buy_id, :user_id, :item_id, :token, :price
+  attr_accessor :postalcode, :delivery_area_id, :municipalities, :address, :building, :phone, :buy_id, :user_id, :item_id, :token
 
   #バリデーション設定
   with_options presence: true do
@@ -23,11 +23,11 @@ class OderBuy
 
   def save
     # 「商品＋ユーザーの情報」を保存して、変数buyに格納
-    buy = Buy.create(user_id: user.id, item_id: item.id)
+    buy = Buy.create(user_id: user_id, item_id: item_id)
 
     # 配送先情報を保存
     Oder.create(postalcode: postalcode, delivery_area_id: delivery_area_id, municipalities: municipalities, 
-                address: address, phone: phone, building: building, buy: buy.id)
+                address: address, phone: phone, building: building)
   end
 
 end
