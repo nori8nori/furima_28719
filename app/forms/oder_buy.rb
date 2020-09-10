@@ -1,8 +1,8 @@
-class OrderBuy
+class OderBuy
 
   include ActiveModel::Model
 
-  attr_accessor :postalcode, :delivery_area_id, :municipalities, :address, :building, :phone, :buy_id, :user_id, :item_id
+  attr_accessor :postalcode, :delivery_area_id, :municipalities, :address, :building, :phone, :buy_id, :user_id, :item_id, :token, :price
 
   #バリデーション設定
   with_options presence: true do
@@ -15,17 +15,19 @@ class OrderBuy
     validates :buy_id
     validates :user_id
     validates :item_id
+    validates :token
   end
 
   # 選択が「--」の時は保存できないようにする
   validates :delivery_area_id, numericality: { other_than: 0, message: 'Select' }
 
   def save
+    # 「商品＋ユーザーの情報」を保存して、変数buyに格納
+    buy = Buy.create(user_id: user.id, item_id: item.id)
+
     # 配送先情報を保存
     Oder.create(postalcode: postalcode, delivery_area_id: delivery_area_id, municipalities: municipalities, 
-                address: address, phone: phone, building: building, buy_id: buy.id)
-    # 商品＋ユーザーの情報を保存
-    Buy.create(user_id: user.id, item_id: item.id)
+                address: address, phone: phone, building: building, buy: buy.id)
   end
 
 end
