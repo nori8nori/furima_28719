@@ -12,12 +12,14 @@ class OdersController < ApplicationController
 
   def create
     @oder = OderBuy.new(oder_params)
-    # pay_item
+    # binding.pry
+    pay_item
     # @oder.save
     # binding.pry
-    if @oder.valid?
-      pay_item
-      @oder.save
+    # if @oder.valid?
+    if @oder.save
+      # pay_item
+      # @oder.save
       # binding.pry
       return redirect_to root_path
     else

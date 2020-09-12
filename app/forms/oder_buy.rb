@@ -26,7 +26,7 @@ class OderBuy
 
     # 配送先情報を保存
     Oder.create(postalcode: postalcode, delivery_area_id: delivery_area_id, municipalities: municipalities, 
-                address: address, phone: phone, building: building)
+                address: address, phone: phone, building: building, buy:buy)
 
      #Oder.create(postalcode: postalcode, delivery_area_id: delivery_area_id, municipalities: municipalities, 
      #            address: address, phone: phone, building: building, buy_id: buy.id)
