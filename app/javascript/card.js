@@ -4,8 +4,6 @@ const pay = () => {
   const form = document.getElementById("charge-form");//charge-form内のsubmitが実行されるとイベントが発火
   form.addEventListener("submit", (e) => {
     e.preventDefault();
- 
-    // alert("OK")//ジャバスクが起動した瞬間に実行される。つまり、HPを開いた瞬間に「OK」が表示されなかったらジャバスク自体が起動していないということ
 
     const formResult = document.getElementById("charge-form");//入力ホーム全体のデータがここに入っている「form_with ~ end」
     const formData = new FormData(formResult);//全部撮ってきてそれをformデータとして認識される
@@ -18,22 +16,9 @@ const pay = () => {
       exp_year: `20${formData.get("oder_buy[ex_year]")}`//クレカの期限「年」
     };
     
-    
-    // console.log(card)
-
-    // alert(formData.get("number"))//ジャバスクが起動した瞬間に実行される。つまり、HPを開いた瞬間に「OK」が表示されなかったらジャバスク自体が起動していないということ
-    // alert(formData.get("cvc"))//クレカのCVC
-    // alert(formData.get("ex_month"))//クレカの期限「月」
-    // alert( `20${formData.get("ex_year")}`)//クレカの期限「年」
-
-    
     Payjp.createToken(card, (status, response) => {
       console.log(card);
       console.log(response.id);
-      // console.log(response.error)
-      // debugger
-      // alert(status)
-      // console.table(response)
 
       if (status == 200) { //PAY.JP側の処理でトークンの生成に成功した場合に、if文の中のコードが実行
 

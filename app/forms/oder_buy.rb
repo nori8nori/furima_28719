@@ -16,19 +16,13 @@ class OderBuy
     validates :item_id
   end
 
-  # 選択が「--」の時は保存できないようにする
-  # validates :delivery_area_id, numericality: { other_than: 0, message: 'Select' }
-
   def save
     # 「商品＋ユーザーの情報」を保存して、変数buyに格納
     buy = Buy.create!(user_id: user_id, item_id: item_id)
-    # お客様情報と商品情報結びつけて保存
-    # Buy.create(user_id: user_id, item_id: item_id)
+
     # 配送先情報を保存
     Oder.create!(postalcode: postalcode, delivery_area_id: delivery_area_id, municipalities: municipalities,
                  address: address, building: building, phone: phone, buy_id: buy.id)
 
-    # Oder.create(postalcode: postalcode, delivery_area_id: delivery_area_id, municipalities: municipalities,
-    #            address: address, phone: phone, building: building, buy_id: buy.id)
   end
 end
