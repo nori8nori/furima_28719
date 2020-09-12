@@ -12,6 +12,7 @@ class OdersController < ApplicationController
     if @oder.valid?
       pay_item
       @oder.save
+      binding.pry
       return redirect_to root_path
     else
       render 'index'

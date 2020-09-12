@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :item do
+    
     name               { 'ドラえもん' }
     explanation        { '2112年9月3日生まれ' }
     category_id        { 1 }
