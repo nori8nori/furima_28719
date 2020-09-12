@@ -13,13 +13,13 @@ class OdersController < ApplicationController
   def create
     @oder = OderBuy.new(oder_params)
     # binding.pry
-    pay_item
+    # pay_item
     # @oder.save
     # binding.pry
-    # if @oder.valid?
-    if @oder.save
-      # pay_item
-      # @oder.save
+    if @oder.valid?
+    # if @oder.save
+      pay_item
+      @oder.save
       # binding.pry
       return redirect_to root_path
     else
@@ -30,7 +30,8 @@ class OdersController < ApplicationController
   private
 
   def oder_params
-    params.require(:oder_buy).permit(:postalcode, :delivery_area_id, :municipalities, :address, :building, :phone, :token, :item_id).merge(user_id: current_user.id)
+    params.require(:oder_buy).permit(:postalcode, :delivery_area_id, :municipalities, :address, :building, :phone,
+                                     :token).merge(item_id: params[:item_id],user_id: current_user.id)
   end
 
   def pay_item
