@@ -7,20 +7,11 @@ class OdersController < ApplicationController
     @oder = OderBuy.new
   end
 
-  # def new
-  # end
-
   def create
     @oder = OderBuy.new(oder_params)
-    # binding.pry
-    # pay_item
-    # @oder.save
-    # binding.pry
     if @oder.valid?
-    # if @oder.save
       pay_item
       @oder.save
-      # binding.pry
       return redirect_to root_path
     else
       render 'index'
