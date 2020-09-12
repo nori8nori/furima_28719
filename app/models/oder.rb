@@ -1,9 +1,8 @@
 class Oder < ApplicationRecord
-
   # belongs_to_active_hashを使用するための記述
   extend ActiveHash::Associations::ActiveRecordExtensions
 
-  #アソシエーション
+  # アソシエーション
   belongs_to :buy
   belongs_to_active_hash :delivery_area
 
@@ -20,5 +19,4 @@ class Oder < ApplicationRecord
 
   # # 選択が「--」の時は保存できないようにする
   # validates :delivery_area_id, numericality: { other_than: 0, message: 'Select' }
-
 end
