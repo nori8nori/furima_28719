@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
-  
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!, only: [:new] # ログインしてないユーザーはnewアクション時にログイン画面に遷移
 
   def index
     # item（商品情報）の箱に入っているもの全てを表示させる
@@ -32,18 +31,16 @@ class ItemsController < ApplicationController
   end
 
   def update
-    
     if @item.update(item_params)
       redirect_to item_path
     else
       render :edit
     end
-
   end
 
   def destroy
     if @item.destroy
-    redirect_to items_path
+      redirect_to items_path
     else
       render :index
     end
@@ -60,11 +57,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
-  end
-
 end

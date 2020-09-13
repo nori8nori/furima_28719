@@ -15,8 +15,8 @@
 
 ### Association
 
-- has_many:items
-- has_many:profiles
+- has_many :items
+- has_many :profiles
 
 ## items テーブル
 
@@ -35,14 +35,14 @@
 ### Association
 - has_one_attached:image
 
-- belongs_to_active_hash:category
-- belongs_to_active_hash:status
-- belongs_to_active_hash:delivery_charge
-- belongs_to_active_hash:deelivery_area
-- belongs_to_active_hash:delivery_day
+- belongs_to_active_hash :category
+- belongs_to_active_hash :status
+- belongs_to_active_hash :delivery_charge
+- belongs_to_active_hash :deelivery_area
+- belongs_to_active_hash :delivery_day
 
-- belongs_to:user
-- has_one:buy
+- belongs_to :user
+- has_one :buy
 
 ## buy テーブル
 
@@ -54,10 +54,10 @@
 ### Association
 
 - has_one:send
-- belongs_to:item
-- belongs_to:user
+- belongs_to :item
+- belongs_to :user
 
-## sends テーブル
+## orders テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -67,9 +67,9 @@
 | address          | string     | null: false                    |
 | building         | string     |                                |
 | phone            | string     | null: false                    |
-| profile          | references | null: false, foreign_key: true |
+| buy              | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to:buy
-- belongs_to_active_hash:delivery_area
+- belongs_to :buy
+- belongs_to_active_hash :delivery_area
