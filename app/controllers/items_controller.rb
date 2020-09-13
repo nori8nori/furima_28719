@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     # item（商品情報）の箱に入っているもの全てを表示させる
-    @item = Item.all
+    @item = Item.all.order("created_at DESC")
   end
 
   def new
