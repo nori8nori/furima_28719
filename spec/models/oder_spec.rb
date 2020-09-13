@@ -52,7 +52,7 @@ RSpec.describe OderBuy, type: :model do
       expect(@oder_buy.errors.full_messages).to include('Postalcode input correctly')
     end
 
-    it '電話番号にはハイフンは不要で、11桁以内であるこ' do
+    it '電話番号には11桁以内であるこ' do
       @oder_buy.phone = '03-123-4567'
       @oder_buy.valid?
       expect(@oder_buy.errors.full_messages).to include('Phone input correctly')

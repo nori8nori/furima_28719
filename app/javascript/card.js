@@ -17,8 +17,6 @@ const pay = () => {
     };
     
     Payjp.createToken(card, (status, response) => {
-      console.log(card);
-      console.log(response.id);
 
       if (status == 200) { //PAY.JP側の処理でトークンの生成に成功した場合に、if文の中のコードが実行
 
