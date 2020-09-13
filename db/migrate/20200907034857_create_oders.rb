@@ -6,7 +6,7 @@ class CreateOders < ActiveRecord::Migration[6.0]
       t.integer    :delivery_area_id,   null: false
       t.string     :municipalities,     null: false
       t.string     :address,            null: false
-      t.string     :building,           
+      t.string     :building
       t.string     :phone,              null: false
       t.references :buy,                null: false, foreign_key: true
 
