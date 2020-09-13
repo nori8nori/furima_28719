@@ -59,10 +59,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
+#静的アセットファイルやログの保存先をHeroku用に微調整してくれる
 group :production do
 gem 'rails_12factor'
 end
-
 #ユーザー登録機能
 gem'devise'
 #「bunding.pry」を使用するため

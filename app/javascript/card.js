@@ -38,4 +38,4 @@ const pay = () => {
   });
  };
 
- window.addEventListener("load", pay);//ページがロードされると関数「pay」が実行
+ window.addEventListener("turbolinks:load", pay);//ページがロードされると関数「pay」が実行
