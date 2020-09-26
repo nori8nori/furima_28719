@@ -5,7 +5,7 @@
 
 【アプリケーションで使用している技術】
 ・インフラ：heroku
-・データベース：MySQL
+・データベース：MySQL/AWS(S3)
 ・開発環境：visual studio code
 ・言語：Ruby on Rails/JavaScript
 

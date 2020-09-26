@@ -76,3 +76,5 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 #クレカ決済機能
 gem 'payjp'
+#AWSのS3機能
+gem "aws-sdk-s3", require: false
