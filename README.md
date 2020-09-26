@@ -1,3 +1,21 @@
+# README
+
+【アプリケーションの概要】
+・フリマアプリのクローンサイト
+
+【アプリケーションで使用している技術】
+・インフラ：heroku
+・データベース：MySQL
+・開発環境：visual studio code
+・言語：Ruby on Rails/JavaScript
+
+【アクリケーションの機能】
+・認証機能（ログイン）：devise
+・商品購入機能：payjp
+・コメント機能
+・画像添付機能：active_hash/mini_magick
+
+
 # テーブル設計
 
 ## users テーブル
