@@ -13,7 +13,7 @@
 ・認証機能（ログイン）：devise
 ・商品購入機能：payjp
 ・コメント機能
-・画像添付機能：active_hash/mini_magick
+・画像添付機能：active_hash/mini_magick/AWS(S3)
 
 
 # テーブル設計
